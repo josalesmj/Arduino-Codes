@@ -1,21 +1,23 @@
 char buf;
-
+String corLed = "azul"; 
+ind ledStatus = 10; //Variável para checar o status do pin24 da placa hc06
 void setup(){
-  //Define o pino 13 como saida
   pinMode(9, OUTPUT);
+  pinMode(ledStatus,INPUT);
   Serial.begin(9600);
 }
 
 void loop(){
-  while(Serial.available() > 0){
-    buf = Serial.read();
-    //Caso seja recebido o caracter L, acende o led
-    if (buf == 'L'){
+  if(digitalRead(ledStatus)==HIGH){
+    Serial.write(corLed);
+    while(Serial.available() > 0){
+      buf = Serial.read();
+      if (buf == 'L'){
       digitalWrite(9, HIGH);
-    }
-    //Caso seja recebido o caracter D, apaga o led
-     if (buf == 'D'){
-      digitalWrite(9, LOW);
+      }
+      if (buf == 'D'){
+        digitalWrite(9, LOW);
+      }
     }
   }
 }
