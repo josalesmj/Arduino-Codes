@@ -1,10 +1,8 @@
-char buf;
-String corLed = "azul"; 
-String str = "";
-ind ledStatus = 10; //Variável para checar o status do pin24 da placa hc06
+char c;
+String readString;
+char corLed[4] = "azul"; 
 void setup(){
   pinMode(9, OUTPUT);
-  pinMode(ledStatus,INPUT);
   Serial.begin(9600);
 }
 
@@ -12,16 +10,24 @@ void loop(){
   //Serial.write("AT\r\t"); Outra possibilidade, chegar se retorna "OK" para o comando AT, o que significaria não estar conectado. 
   //str = Serial.read();
   //if(!str.equals("OK"));{
-  if(digitalRead(ledStatus)==HIGH){
-    Serial.write(corLed);
-    while(Serial.available() > 0){
-      buf = Serial.read();
-      if (buf == 'L'){
-      digitalWrite(9, HIGH);
-      }
-      if (buf == 'D'){
-        digitalWrite(9, LOW);
-      }
+  while(Serial.available()>0){
+    delay(3);
+    c = Serial.read();
+    readString += c;
+  }
+  if(readString.length()>0){
+    Serial.println(readString);
+    if(readString == "cor?"){
+      Serial.println(corLed);
     }
+    else if(readString == "on"){
+      digitalWrite(9,HIGH);
+      Serial.println("On");
+    }
+    else if(readString == "off"){
+      digitalWrite(9,LOW);
+      Serial.println("Off");
+    }
+    readString =""; 
   }
 }
