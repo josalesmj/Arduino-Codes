@@ -1,6 +1,7 @@
 char c;
 String readString;
 char corLed[4] = "azul"; 
+
 void setup(){
   pinMode(9, OUTPUT);
   Serial.begin(9600);
