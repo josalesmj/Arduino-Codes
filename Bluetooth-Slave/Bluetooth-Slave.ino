@@ -1,6 +1,7 @@
 char c;
 String readString;
 char corLed[4] = "azul"; 
+
 void setup(){
   pinMode(9, OUTPUT);
   Serial.begin(9600);
@@ -17,16 +18,16 @@ void loop(){
   }
   if(readString.length()>0){
     Serial.println(readString);
-    if(readString == "cor?"){
-      Serial.println(corLed);
+    if(readString == "c"){
+      Serial.println("0");
     }
-    else if(readString == "on"){
+    else if(readString.startsWith("on")){
       digitalWrite(9,HIGH);
-      Serial.println("On");
+      //Serial.println("On");
     }
-    else if(readString == "off"){
+    else if(readString.startsWith("of")){
       digitalWrite(9,LOW);
-      Serial.println("Off");
+      //Serial.println("Off");
     }
     readString =""; 
   }
