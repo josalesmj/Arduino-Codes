@@ -31,17 +31,41 @@ void loop(){
   delay(2000);
   mySerial.write("AT+INIT\r\t");
   delay(2000);
-  mySerial.write("AT+INQ\r\t");
-  delay(3000);
+  //mySerial.write("AT+INQ\r\t");
+  //delay(3000);
   mySerial.write("AT+LINK=12,9,139146\r\t");
   delay(3000);
   digitalWrite(pinEn,LOW);
   delay(2000);
-
-  while(1){
+  
+  int i = 0;
+  while(i<5){
   mySerial.println("on");
-  delay(1000);
+  delay(2000);
   mySerial.println("off");
-  delay(1000);
+  delay(2000);
+  i++;
+  }
+  //Alteração daqui pra baixo.
+  digitalWrite(pinEn, HIGH);
+  delay(2000);
+  mySerial.write("AT+DISC\r\t");
+  delay(2000);
+  mySerial.write("AT+BIND=98D3,31,F50EEC\r\t");
+  delay(2000);
+  digitalWrite("AT+INIT\r\t");
+  delay(2000);
+  mySerial.write("AT+LINK=98D3,31,F50EEC\r\t");
+  delay(2000);
+  digitalWrite(pinEn,LOW);
+  delay(2000);
+  
+  i = 0;
+  while(i<5){
+  mySerial.println("on");
+  delay(2000);
+  mySerial.println("off");
+  delay(2000);
+  i++;
   }
 }
