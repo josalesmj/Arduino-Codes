@@ -1,9 +1,7 @@
 #include<SoftwareSerial.h>
 
 SoftwareSerial mySerial(10, 11);//RX,TX
-String command = "";
 String str = "";
-String andress;
 int pinEn = 12;
 int btPower = 9;
 char c = 'a';
