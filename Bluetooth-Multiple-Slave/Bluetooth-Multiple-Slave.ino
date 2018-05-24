@@ -4,9 +4,7 @@
  * linvor: 12,9,139146
 */
 SoftwareSerial mySerial(10, 11);
-String command = "";
 String str = "";
-String andress;
 int pinEn = 12;
 int btPower = 9;
 int flag = HIGH;
