@@ -17,6 +17,8 @@ void setup(){
   delay(100);
   digitalWrite(pinEn, HIGH);
   delay(2000);
+  mySerial.write("AT+ROLE=1\r\t");
+  delay(1000);
   mySerial.write("AT+INIT\r\t");
   if (mySerial.available()) {
     while (mySerial.available()) {
