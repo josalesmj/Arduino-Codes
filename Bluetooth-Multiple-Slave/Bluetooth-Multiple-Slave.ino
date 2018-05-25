@@ -15,15 +15,6 @@ void setup(){
   pinMode(btPower, OUTPUT);
   pinMode(5,OUTPUT);
   pinMode(6,OUTPUT);
-  
-  /************************************************
-  Setting the pins to low is important because 
-  in order for us to get into AT mode the key pin
-  has to be set to Ground FIRST. Many tutorials out
-  there fail to mention this important fact and 
-  therefore many people have problems with getting 
-  into the AT mode of the HC-05
-  ************************************************/
   putInSlaveMode();
   Serial.println("Aguardando por conexão");
  }
