@@ -1,8 +1,8 @@
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
  
-const char* ssid = "GVT-4141";
-const char* password =  "1532000662";
+const char* ssid = "WIFI_NAME";
+const char* password =  "PASSWORD";
 const char* mqttServer = "m15.cloudmqtt.com";
 const int mqttPort = 11727;
 const char* mqttUser = "sttavgpn";
