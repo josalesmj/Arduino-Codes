@@ -1,7 +1,7 @@
 #include <VirtualWire.h>
 
 char inData[50];
-int newmessage = 0;
+int newMessage = 0;
 void setup(){
   vw_setup(2000);
   vw_set_tx_pin(5);
@@ -20,15 +20,17 @@ void loop(){
       index++;
       inData[index] = '\0';
     }
-    newmessage = 1;
+    newMessage = 1;
   }
-  if(newmessage == 1){
+  if(newMessage == 1){
     inData[0] = '-';
     sprintf(mss, "%s", inData);
-    vw_send((uint8_t *)mss, strlen(mss));
-    vw_wait_tx();
-    Serial.println(mss);
-    delay(600);
-    newmessage = 0; // Indicate that there is no new message to wait for the new one
+    for(int i=0;i<10;i++){
+      vw_send((uint8_t *)mss, strlen(mss));
+      vw_wait_tx();
+      Serial.println(mss);
+      delay(600);
+    }
+    newMessage = 0;
   }
 }
