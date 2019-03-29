@@ -16,7 +16,7 @@
 const char* SSID = "SSID";
 const char* PASSWORD = "SENHA";
 
-onst char* mqttServer = "xxxxxxxxxxxxxxxxx";
+const char* mqttServer = "xxxxxxxxxxxxxxxxx";
 const char* mqttUser = "xxxxxxxx";
 const char* mqttPassword = "xxxxxxxxxxxx";
 const int mqttPort = xxxxx;
